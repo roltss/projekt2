@@ -2,7 +2,7 @@ async function addTodo() {
   const text = document.getElementById('input').value;
   const name = prompt('Your name?');
 
-  await fetch('https://tinkr.ee/sdb/roland/my_todos', {
+  await fetch('https://tinkr.tech/sdb/roland/my_todos', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ text: text, name: name })
@@ -13,7 +13,7 @@ async function addTodo() {
 }
 
 async function loadTodos() {
-  const response = await fetch('https://tinkr.ee/sdb/roland/my_todos');
+  const response = await fetch('https://tinkr.tech/sdb/roland/my_todos');
   const todos = await response.json();
 
   const list = document.getElementById('list');
