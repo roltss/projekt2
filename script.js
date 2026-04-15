@@ -1,26 +1,41 @@
 async function addTodo() {
-  const text = document.getElementById('input').value;
-  const name = prompt('Your name?');
 
-  await fetch('https://tinkr.tech/sdb/roland/my_todos', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text: text, name: name })
+  let text = document.getElementById("input").value;
+
+  let name = prompt("Sisesta oma nimi:");
+
+  await fetch("https://tinkr.tech/sdb/roland/my_todos", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      text: text,
+      name: name
+    })
   });
 
-  document.getElementById('input').value = '';
+  document.getElementById("input").value = "";
+
   loadTodos();
 }
 
+
 async function loadTodos() {
-  const response = await fetch('https://tinkr.tech/sdb/roland/my_todos');
-  const todos = await response.json();
 
-  const list = document.getElementById('list');
-  list.innerHTML = '';
+  let response = await fetch("https://tinkr.tech/sdb/roland/my_todos");
 
-  for (const todo of todos) {
-    list.innerHTML += '<li>' + todo.name + ': ' + todo.text + '</li>';
+  let todos = await response.json();
+
+  let list = document.getElementById("list");
+
+  list.innerHTML = "";
+
+  for (let i = 0; i < todos.length; i++) {
+
+    let todo = todos[i];
+
+    list.innerHTML += "<li>" + todo.name + ": " + todo.text + "</li>";
   }
 }
 
