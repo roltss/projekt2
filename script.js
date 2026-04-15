@@ -2,7 +2,7 @@ async function addTodo() {
 
   let text = document.getElementById("input").value;
 
-  let name = prompt("Sisesta oma nimi:");
+  let name = prompt("Your name?");
 
   await fetch("https://tinkr.tech/sdb/roland/my_todos", {
     method: "POST",
